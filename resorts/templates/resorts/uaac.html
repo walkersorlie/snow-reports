@@ -1,0 +1,21 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<div>
+  {% if latest_uaac_report %}
+  <ul>
+    <li>{{ latest_uaac_report.area }}</li>
+    <li>{{ latest_uaac_report.forcaster }}</li>
+    <!--   <li>{{ latest_uaac_report.date }}</li> -->
+
+    {% load tz %}
+    <li>{{ latest_uaac_report.date|timezone:"America/Denver" }}</li>
+    <li>{{ latest_uaac_report.advisory }}</li>
+    <li>{{ latest_uaac_report.current_conditions }}</li>
+    <li>{{ latest_uaac_report.weather }}</li>
+  </ul>
+  {% else %}
+  <p>No weather report is available.</p>
+  {% endif %}
+</div>
+{% endblock %}

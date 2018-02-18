@@ -1,0 +1,25 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<div>
+  {% if latest_alta_weather %}
+  <ul>
+    <!-- <li>{{ latest_alta_weather.last_updated }}</li> -->
+
+    <!-- This shit works but is super sketchy -->
+    {% load tz %}
+    <li>{{ latest_alta_weather.last_updated|timezone:"America/Denver" }}</li>
+    <li>{{ latest_alta_weather.last_updated_time }}</li>
+    <li>{{ latest_alta_weather.twelve_hour_snow }}</li>
+    <li>{{ latest_alta_weather.twenty4_hour_snow }}</li>
+    <li>{{ latest_alta_weather.base }}</li>
+    <li>{{ latest_alta_weather.total_snow }}</li>
+    <li>{{ latest_alta_weather.current_temp }}</li>
+    <li>{{ latest_alta_weather.current_weather }}</li>
+    <li>{{ latest_alta_weather.forecast }}</li>
+  </ul>
+  {% else %}
+  <p>No weather is available.</p>
+  {% endif %}
+</div>
+{% endblock %}
