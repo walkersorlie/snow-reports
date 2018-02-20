@@ -1,7 +1,11 @@
 {% extends 'home/base.html' %}
 {% load static %}
 
-{% block content %}
+{% block title %}
+  Resorts
+{% endblock %}
+
+{% block body %}
   <div>
     {{ response }}
   </div>
@@ -9,19 +13,19 @@
     <div class="row">
       <div class="col-lg-4">
         <h2>Alta</h2>
-        <p><a class="btn btn-primary" href="./alta" role="button">Alta Report &raquo;</a></p>
+        <p><a class="btn btn-primary" href="{% url 'resorts:alta' %}" role="button">Alta Report &raquo;</a></p>
       </div>
       <div class="col-lg-4">
         <h2>Snowbird</h2>
-        <p><a class="btn btn-primary" href="./snowbird" role="button">Snowbird Report &raquo;</a></p>
+        <p><a class="btn btn-primary" href="{% url 'resorts:snowbird' %}" role="button">Snowbird Report &raquo;</a></p>
      </div>
      <div class="col-lg-4">
        <h2>Brighton</h2>
-       <p><a class="btn btn-primary" href="./snowbird" role="button">Brighton Report &raquo;</a></p>
+       <p><a class="btn btn-primary" href="{% url 'resorts:brighton' %}" role="button">Brighton Report &raquo;</a></p>
     </div>
     <div class="col-lg-4">
       <h2>Solitude</h2>
-      <p><a class="btn btn-primary" href="./snowbird" role="button">Solitude Report &raquo;</a></p>
+      <p><a class="btn btn-primary" href="{% url 'resorts:solitude' %}" role="button">Solitude Report &raquo;</a></p>
    </div>
    </div>
  </div>

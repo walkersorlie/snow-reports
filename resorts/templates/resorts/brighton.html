@@ -1,14 +1,20 @@
 {% extends 'home/base.html' %}
+{% load static %}
 
-{% block content %}
+{% block title %}
+  Brighton Report
+{% endblock %}
+
+{% block body %}
 <div>
   {% if latest_brighton_weather %}
   <ul>
     <!-- <li>{{ latest_brighton_weather.last_updated }}</li> -->
 
-    <!-- This shit works but is super sketchy -->
+    <!-- This shit works but is super sketchy
     {% load tz %}
-    <li>{{ latest_brighton_weather.last_updated|timezone:"America/Denver" }}</li>
+    <li>{{ latest_brighton_weather.last_updated|timezone:"America/Denver" }}</li> -->
+    <li>{{ latest_brighton_weather.last_updated }}</li>
     <li>{{ latest_brighton_weather.twelve_hour_snow }}</li>
     <li>{{ latest_brighton_weather.base }}</li>
     <li>{{ latest_brighton_weather.total_snow }}</li>

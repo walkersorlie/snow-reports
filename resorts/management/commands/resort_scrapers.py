@@ -45,8 +45,8 @@ class Command(BaseCommand):
         htmlfile = urllib2.Request('https://www.alta.com/conditions/daily-mountain-report/snow-report', headers = {'User-Agent': 'Mozilla/5.0'})
         html = urlopen(htmlfile).read()
         soup = BeautifulSoup(html, "lxml")
-        with open('/home/walker/senior_proj/snow_site/reports/alta.html', 'w') as file:
-            file.write(html)
+        # with open('/home/walker/senior_proj/snow_site/reports/alta.html', 'w') as file:
+        #     file.write(html)
 
         # with open("./reports/alta.html") as fp:
         #     soup = BeautifulSoup(fp, "lxml")
@@ -149,8 +149,8 @@ class Command(BaseCommand):
         html = urlopen(htmlfile).read()
         soup = BeautifulSoup(html, "lxml")
 
-        with open('/home/walker/senior_proj/snow_site/reports/snowbird.html', 'w') as file:
-            file.write(html)
+        # with open('/home/walker/senior_proj/snow_site/reports/snowbird.html', 'w') as file:
+        #     file.write(html)
 
         # with open("./reports/snowbird.html") as fp:
         #     soup = BeautifulSoup(fp, "lxml")
@@ -206,8 +206,8 @@ class Command(BaseCommand):
         html = urlopen(htmlfile).read()
         soup = BeautifulSoup(html, "lxml")
 
-        with open('/home/walker/senior_proj/snow_site/reports/brighton.html', 'w') as file:
-            file.write(html)
+        # with open('/home/walker/senior_proj/snow_site/reports/brighton.html', 'w') as file:
+        #     file.write(html)
 
         # with open("./reports/brighton.html") as fp:
         #     soup = BeautifulSoup(fp, "lxml")
@@ -252,8 +252,8 @@ class Command(BaseCommand):
         html = urlopen(htmlfile).read()
         soup = BeautifulSoup(html, "lxml")
 
-        with open('/home/walker/senior_proj/snow_site/reports/solitude.html', 'w') as file:
-            file.write(html)
+        # with open('/home/walker/senior_proj/snow_site/reports/solitude.html', 'w') as file:
+        #     file.write(html)
 
         # with open("./reports/solitude.html") as fp:
         #     soup = BeautifulSoup(fp, "lxml")
