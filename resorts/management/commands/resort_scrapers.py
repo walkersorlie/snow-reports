@@ -35,6 +35,7 @@ class Command(BaseCommand):
         brighton_thread.join()
         solitude_thread.join()
 
+
         """
         urls = [
         'https://www.alta.com/conditions/daily-mountain-report/snow-report',
@@ -124,12 +125,12 @@ def alta():
                     # twenty4_hour_snow_field = str(row.find('td'))
                     twenty4_hour_snow_field = row.find('td').get_text()
                     # response.write((twenty4_hour_snow_field + "<br><br>"))
-                elif specific == 3: # base_field
+                elif specific == 2: # base_field
                     # base_field = str(row.find('td'))
                     base_field = row.find('td').get_text()
                     # print base_field
                     # response.write((base_field + "<br><br>"))
-                elif specific == 4: # total_snow_field
+                elif specific == 3: # total_snow_field
                     # total_snow_field = str(row.find('td')) + " "
                     total_snow_field = row.find('td').get_text()
                     # response.write((total_snow_field + "<br><br>"))
@@ -257,8 +258,9 @@ def brighton():
     last_updated_time_field = ""
     twelve_hour_snow_field = current_snow.find('h2').get_text()
     twenty4_hour_snow_field = ""
-    base_field = snow_totals.find('h2').get_text()
-    total_snow_field = snow_totals.find('p').get_text()
+    # base_field = snow_totals.find('h2').get_text()
+    base_field = snow_totals.find('p').get_text()
+    total_snow_field = ""
     current_temp_field = current_temp.find('h2').get_text()
     current_weather_field = current_temp.find('p').get_text()
     forecast_field = forecast.find('p').get_text()
@@ -334,3 +336,5 @@ def solitude():
     # Resort_Weather model
     solitude_weather = Resort_Weather(last_updated=last_updated_date, last_updated_time=last_updated_time_field, twelve_hour_snow=twelve_hour_snow_field, twenty4_hour_snow=twenty4_hour_snow_field, base=base_field, total_snow=total_snow_field, current_temp=current_temp_field, current_weather=current_weather_field, forecast=forecast_field, resort=foreign_key)
     solitude_weather.save()
+
+    # print "script ran at: " + datetime.datetime.now()
