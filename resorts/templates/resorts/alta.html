@@ -2,30 +2,50 @@
 {% load static %}
 
 {% block title %}
-  Alta Report
+Alta Report
 {% endblock %}
 
 {% block body %}
 <div>
-  {% if latest_alta_weather %}
-  <ul>
-    <!-- <li>{{ latest_alta_weather.last_updated }}</li> -->
+  <div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+      <div class="col-xs-12 col-sm-9">
+        <p class="pull-right visible-xs">
+          <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+        </p>
+        <div class="jumbotron">
+          <h1>Alta Ski Resort Weather Report</h1>
+          <p>{{ latest_alta_weather.last_updated_time }}</p>
+        </div>
+        {% if latest_alta_weather %}
+        <div class="row" style="margin-left:auto; margin-right:auto;">
+          <div class="col-xs-6 col-lg-4">
+            <h2>Snow Stuffs</h2>
+            <p>Twelve hour snow: {{ latest_alta_weather.twelve_hour_snow }}</p>
+            <p>Twenty-four hour snow: {{ latest_alta_weather.twenty4_hour_snow }}</p>
+            <p>Base depth: {{ latest_alta_weather.base }}</p>
+            <p>Total snow this season: {{ latest_alta_weather.total_snow }}</p>
+          </div>
+          <div class="col-xs-6 col-lg-4">
+            <h2>Current Weather</h2>
+            <p>Current temperature: {{ latest_alta_weather.current_temp }}</p>
+            <p>Wind and sun: {{ latest_alta_weather.current_weather }}</p>
+            <p>Forecast: {{ latest_alta_weather.forecast }}</p>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <p>No weather is available.</p>
+      {% endif %}
 
-    <!-- This shit works but is super sketchy
-    {% load tz %}
-    <li>{{ latest_alta_weather.last_updated|timezone:"America/Denver" }}</li> -->
-    <li>{{ latest_alta_weather.last_updated }}</li>
-    <li>{{ latest_alta_weather.last_updated_time }}</li>
-    <li>{{ latest_alta_weather.twelve_hour_snow }}</li>
-    <li>{{ latest_alta_weather.twenty4_hour_snow }}</li>
-    <li>{{ latest_alta_weather.base }}</li>
-    <li>{{ latest_alta_weather.total_snow }}</li>
-    <li>{{ latest_alta_weather.current_temp }}</li>
-    <li>{{ latest_alta_weather.current_weather }}</li>
-    <li>{{ latest_alta_weather.forecast }}</li>
-  </ul>
-  {% else %}
-  <p>No weather is available.</p>
-  {% endif %}
-</div>
-{% endblock %}
+      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+        <div class="list-group">
+          <a href="#" class="list-group-item active">Link</a>
+          <a href="#" class="list-group-item">Link</a>
+          <a href="#" class="list-group-item">Link</a>
+          <a href="#" class="list-group-item">Link</a>
+          <a href="#" class="list-group-item">Link</a>
+        </div>
+      </div><!--/.sidebar-offcanvas-->
+    </div><!--/row-->
+    {% endblock %}

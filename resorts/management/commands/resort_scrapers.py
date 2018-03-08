@@ -125,12 +125,12 @@ def alta():
                     # twenty4_hour_snow_field = str(row.find('td'))
                     twenty4_hour_snow_field = row.find('td').get_text()
                     # response.write((twenty4_hour_snow_field + "<br><br>"))
-                elif specific == 2: # base_field
+                elif specific == 3: # base_field
                     # base_field = str(row.find('td'))
                     base_field = row.find('td').get_text()
                     # print base_field
                     # response.write((base_field + "<br><br>"))
-                elif specific == 3: # total_snow_field
+                elif specific == 4: # total_snow_field
                     # total_snow_field = str(row.find('td')) + " "
                     total_snow_field = row.find('td').get_text()
                     # response.write((total_snow_field + "<br><br>"))
