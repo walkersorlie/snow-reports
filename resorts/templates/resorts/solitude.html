@@ -2,28 +2,51 @@
 {% load static %}
 
 {% block title %}
-  Solitude Report
+Solitude Report
 {% endblock %}
 
 {% block body %}
 <div>
-  {% if latest_solitude_weather %}
-  <ul>
-    <!-- <li>{{ latest_solitude_weather.last_updated }}</li> -->
+  <script src="{% static 'myScript.js' %}"></script>
 
-    <!-- This shit works but is super sketchy
-    {% load tz %}
-    <li>{{ latest_solitude_weather.last_updated|timezone:"America/Denver" }}</li> -->
-    <li>{{ latest_solitude_weather.last_updated }}</li>
-    <li>{{ latest_solitude_weather.twenty4_hour_snow }}</li>
-    <li>{{ latest_solitude_weather.base }}</li>
-    <li>{{ latest_solitude_weather.total_snow }}</li>
-    <li>{{ latest_solitude_weather.current_temp }}</li>
-    <li>{{ latest_solitude_weather.current_weather }}</li>
-    <li>{{ latest_solitude_weather.forecast }}</li>
-  </ul>
-  {% else %}
-  <p>No weather is available.</p>
-  {% endif %}
-</div>
-{% endblock %}
+  <div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+      <div class="col-xs-12 col-sm-9">
+        <p class="pull-right visible-xs">
+          <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+        </p>
+        <div class="jumbotron">
+          <h1>Solitude Ski Resort Weather Report</h1>
+          <p>{{ latest_solitude_weather.last_updated_time }}</p>
+        </div>
+        {% if latest_solitude_weather %}
+        <div class="row" style="margin-left:auto; margin-right:auto;">
+          <div class="col-xs-6 col-lg-4">
+            <h2>Snow Stuffs</h2>
+            <p>Twenty-four hour snow: {{ latest_solitude_weather.twenty4_hour_snow }}</p>
+            <p>Base depth: {{ latest_solitude_weather.base }}</p>
+            <p>Total snow this season: {{ latest_solitude_weather.total_snow }}</p>
+          </div>
+          <div class="col-xs-6 col-lg-4">
+            <h2>Current Weather</h2>
+            <p>Current temperature: {{ latest_solitude_weather.current_temp }}</p>
+            <p>Wind and sun: {{ latest_solitude_weather.current_weather }}</p>
+            <p>Forecast: {{ latest_solitude_weather.forecast }}</p>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <p>No weather is available.</p>
+      {% endif %}
+
+      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+        <div class="list-group">
+          <a href="https://solitudemountain.com/on-the-mountain" target="_blank" class="list-group-item">Solitude Snow Report</a>
+          <a href="https://forecast.weather.gov/MapClick.php?CityName=Solitude&state=UT&site=SLC&textField1=40.6211&textField2=-111.592#.VeNCjflVgUg" target="_blank" class="list-group-item">National Weather Service - Solitude, UT</a>
+          <a href="#" class="list-group-item">Link</a>
+          <a href="#" class="list-group-item">Link</a>
+          <a href="#" class="list-group-item">Link</a>
+        </div>
+      </div><!--/.sidebar-offcanvas-->
+    </div><!--/row-->
+    {% endblock %}

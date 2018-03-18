@@ -2,25 +2,51 @@
 {% load static %}
 
 {% block title %}
-  UAAC Report
+UAAC Report
 {% endblock %}
 
-{% block body %}
-<div>
-  {% if latest_uaac_report %}
-  <ul>
-    <li>{{ latest_uaac_report.area }}</li>
-    <li>{{ latest_uaac_report.forcaster }}</li>
-    <!--   <li>{{ latest_uaac_report.date }}</li> -->
 
-    {% load tz %}
-    <li>{{ latest_uaac_report.date|timezone:"America/Denver" }}</li>
-    <li>{{ latest_uaac_report.advisory }}</li>
-    <li>{{ latest_uaac_report.current_conditions }}</li>
-    <li>{{ latest_uaac_report.weather }}</li>
-  </ul>
-  {% else %}
-  <p>No weather report is available.</p>
-  {% endif %}
+{% block body %}
+<script src="{% static 'myScript.js' %}"></script>
+
+<div class="container">
+  <div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-xs-12 col-sm-9">
+      <p class="pull-right visible-xs">
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+      </p>
+      <div class="jumbotron">
+        <h1>{{ latest_uaac_report.area }}</h1>
+        <p>{{ latest_uaac_report.forcaster }}</p>
+        <p>{{ latest_uaac_report.date }}</p>
+      </div>
+      {% if latest_uaac_report %}
+      <div class="row" style="margin-left:auto; margin-right:auto;">
+        <div class="col-xs-6 col-lg-4">
+          <h2>Advisory</h2>
+          <p>{{ latest_uaac_report.advisory }}<p>
+        </div>
+        <div class="col-xs-6 col-lg-4">
+          <h2>Current Conditions</h2>
+          <p>{{ latest_uaac_report.current_conditions }}</p>
+          <p>{{ latest_uaac_report.weather }}</p>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <p>No weather is available.</p>
+    {% endif %}
+
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+      <div class="list-group">
+        <a href="https://utahavalanchecenter.org/advisory/salt-lake" target="_blank" class="list-group-item">UAAC Report</a>
+      </div>
+    </div><!--/.sidebar-offcanvas-->
+  </div><!--/row-->
+</div><!--/container-->
+<div>
+  <iframe src="{% static 'avi-problems.html' %}" style='width:100%; height:500px;'></iframe>
+  <!-- <iframe src="https://www.w3schools.com/html/html_iframe.asp" style='width:100%; height:500px;'></iframe> -->
 </div>
+
 {% endblock %}

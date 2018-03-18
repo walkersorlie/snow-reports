@@ -6,46 +6,45 @@ Alta Report
 {% endblock %}
 
 {% block body %}
-<div>
-  <div class="container">
-    <div class="row row-offcanvas row-offcanvas-right">
-      <div class="col-xs-12 col-sm-9">
-        <p class="pull-right visible-xs">
-          <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-        </p>
-        <div class="jumbotron">
-          <h1>Alta Ski Resort Weather Report</h1>
-          <p>{{ latest_alta_weather.last_updated_time }}</p>
+<script src="{% static 'myScript.js' %}"></script>
+
+<div class="container">
+  <div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-xs-12 col-sm-9">
+      <p class="pull-right visible-xs">
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+      </p>
+      <div class="jumbotron">
+        <h1>Alta Ski Resort Weather Report</h1>
+        <p>{{ latest_alta_weather.last_updated_time }}</p>
+      </div>
+      {% if latest_alta_weather %}
+      <div class="row" style="margin-left:auto; margin-right:auto;">
+        <div class="col-xs-6 col-lg-4">
+          <h2>Snow Stuffs</h2>
+          <p>Twelve hour snow: {{ latest_alta_weather.twelve_hour_snow }}</p>
+          <p>Twenty-four hour snow: {{ latest_alta_weather.twenty4_hour_snow }}</p>
+          <p>Base depth: {{ latest_alta_weather.base }}</p>
+          <p>Total snow this season: {{ latest_alta_weather.total_snow }}</p>
         </div>
-        {% if latest_alta_weather %}
-        <div class="row" style="margin-left:auto; margin-right:auto;">
-          <div class="col-xs-6 col-lg-4">
-            <h2>Snow Stuffs</h2>
-            <p>Twelve hour snow: {{ latest_alta_weather.twelve_hour_snow }}</p>
-            <p>Twenty-four hour snow: {{ latest_alta_weather.twenty4_hour_snow }}</p>
-            <p>Base depth: {{ latest_alta_weather.base }}</p>
-            <p>Total snow this season: {{ latest_alta_weather.total_snow }}</p>
-          </div>
-          <div class="col-xs-6 col-lg-4">
-            <h2>Current Weather</h2>
-            <p>Current temperature: {{ latest_alta_weather.current_temp }}</p>
-            <p>Wind and sun: {{ latest_alta_weather.current_weather }}</p>
-            <p>Forecast: {{ latest_alta_weather.forecast }}</p>
-          </div>
+        <div class="col-xs-6 col-lg-4">
+          <h2>Current Weather</h2>
+          <p>Current temperature: {{ latest_alta_weather.current_temp }}</p>
+          <p>Wind and sun: {{ latest_alta_weather.current_weather }}</p>
+          <p>Forecast: {{ latest_alta_weather.forecast }}</p>
         </div>
       </div>
-      {% else %}
-      <p>No weather is available.</p>
-      {% endif %}
+    </div>
+    {% else %}
+    <p>No weather is available.</p>
+    {% endif %}
 
-      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-        <div class="list-group">
-          <a href="#" class="list-group-item active">Link</a>
-          <a href="#" class="list-group-item">Link</a>
-          <a href="#" class="list-group-item">Link</a>
-          <a href="#" class="list-group-item">Link</a>
-          <a href="#" class="list-group-item">Link</a>
-        </div>
-      </div><!--/.sidebar-offcanvas-->
-    </div><!--/row-->
-    {% endblock %}
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+      <div class="list-group">
+        <a href="https://www.alta.com/conditions/daily-mountain-report/snow-report" target="_blank" class="list-group-item">Alta Snow Report</a>
+        <a href="https://forecast.weather.gov/MapClick.php?site=slc&smap=1&textField1=40.584583333333&textField2=-111.62125#.VQs510bwO1w" target="_blank" class="list-group-item">National Weather Service - Alta, UT</a>
+      </div>
+    </div><!--/.sidebar-offcanvas-->
+  </div><!--/row-->
+</div>
+{% endblock %}

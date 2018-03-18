@@ -263,7 +263,8 @@ def brighton():
     total_snow_field = ""
     current_temp_field = current_temp.find('h2').get_text()
     current_weather_field = current_temp.find('p').get_text()
-    forecast_field = forecast.find('p').get_text()
+    # forecast_field = forecast.find('p').get_text()
+    forecast_field = ""
     foreign_key = Resort.objects.get(pk=3)
 
     # print twelve_hour_snow_field
@@ -272,6 +273,14 @@ def brighton():
     # print current_temp_field
     # print current_weather_field
     # print forecast_field
+
+    # print forecast
+    headers = forecast.find_all('h3', limit=3)
+    content = forecast.find_all('p', limit=3)
+    count = 0
+    while count < 3:
+        forecast_field = forecast_field + headers[count].get_text() + ": " + content[count].get_text() + " "
+        count += 1
 
     # Resort_Weather model
     brighton_weather = Resort_Weather(last_updated=last_updated_date, last_updated_time=last_updated_time_field, twelve_hour_snow=twelve_hour_snow_field, twenty4_hour_snow=twenty4_hour_snow_field, base=base_field, total_snow=total_snow_field, current_temp=current_temp_field, current_weather=current_weather_field, forecast=forecast_field, resort=foreign_key)
@@ -300,6 +309,9 @@ def solitude():
     weather_details_outer = weather_tables.find('div', class_='weather-details')
     weather_details = weather_details_outer.find('ul').find_all('li')
 
+    forecast = soup.find('div', class_='wrap solitude-open').find('div', class_='item item-2')
+    hilo = forecast.find('div', class_='hilo')
+
     last_updated_date = datetime.datetime.now()
     # last_updated_date = localtime(now())
     last_updated_time_field = ""
@@ -325,6 +337,14 @@ def solitude():
             last_updated_time_field = li.get_text()
         elif count == 3 or count == 4 or count == 5:
             current_weather_field = current_weather_field  + li.get_text() + " "
+
+    for count, div in enumerate(hilo):
+        if count == 0:
+            temp = hilo.find('div', class_='high')
+            forecast_field = forecast_field + "high: " + temp.find('span').get_text() + " "
+        elif count ==1:
+            temp = hilo.find('div', class_='low')
+            forecast_field = forecast_field + "low: " + temp.find('span').get_text()
 
     # print last_updated_time_field
     # print twenty4_hour_snow_field

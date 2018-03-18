@@ -45,8 +45,8 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-    background-color: white;
-    color: white;
+    background-color: #eee;
+    color: #eee;
     background-color: transparent;
 }
 
@@ -75,14 +75,14 @@
 }
 
 .dropdown-content2 a {
-  color: white;
+  color: #eee;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
 .dropdown-content2 a:hover {
-  background-color: black;
+  background-color: #222;
   color: #222;
 }
 .dropdown2 a:hover {background-color: #eee}
@@ -93,6 +93,49 @@
 
 .dropdown2:hover .dropbtn2 {
     background-color: #222;
-    color: black;
+    color: #222;
     background-color: transparent;
 }
+
+#sidebar {
+  margin-top: 60px ;
+}
+
+.list-group a {
+  background-color: #222;
+  color: #eee;
+}
+
+a.list-group-item:hover {
+  background-color: #eee;
+  color: #222;
+}
+
+.list-group-item-hover {
+  background-color: #eee;
+  color: #222;
+}
+/*.list-group-hover {
+  background-color: #eee;
+  color: #222;
+}*/
+/*.list-group > a:nth-of-type(odd) {
+  background-color: #222;
+  color: #eee;
+}
+
+.list-group > a:nth-of-type(even){
+  background-color: #eee;
+  color: #222;
+}*/
+
+/*
+.list-group > a:nth-of-type(odd):hover {
+  background-color: #eee;
+  color: #222
+}
+
+.list-group > a:nth-of-type(even):hover {
+  background-color: #222;
+  color: #eee;
+}*/

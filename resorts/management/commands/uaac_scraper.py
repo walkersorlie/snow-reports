@@ -29,6 +29,21 @@ class Command(BaseCommand):
         #     soup = BeautifulSoup(fp, "lxml")
 
         avalanche_problems = soup.find_all('div', class_ = 'clearbg avalanche-problem-row')
+        with open('/home/walker/senior_proj/snow_site/static/avi-problems.html', 'w') as file:
+            # file.write("%s" % soup.head)
+            # file.write("%s" % avalanche_problems)
+            file.write(str(soup.head))
+            file.write(str(avalanche_problems))
+
+        # for table in avalanche_problems:
+        #     problems_table = table.find('table', class_='avalanche-problem-table')
+        #     print problems_table
+        #     print
+        #     for count, td in enumerate(problems_table):
+        #         if count == 1:
+        #             print td
+        #             with open('/home/walker/senior_proj/snow_site/reports/avi-problems.html', 'w') as file:
+        #               file.write(td)
 
         issued_by = soup.find(id = "subtitle-date-row")
         area_field = issued_by.find('th').get_text()
