@@ -6,47 +6,58 @@ Brighton Report
 {% endblock %}
 
 {% block body %}
-<div>
-  <script src="{% static 'myScript.js' %}"></script>
+<script src="{% static 'myScript.js' %}"></script>
 
-  <div class="container">
-    <div class="row row-offcanvas row-offcanvas-right">
-      <div class="col-xs-12 col-sm-9">
-        <p class="pull-right visible-xs">
-          <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-        </p>
-        <div class="jumbotron">
-          <h1>Brighton Ski Resort Weather Report</h1>
-          <p>{{ latest_alta_weather.last_updated_time }}</p>
+<div class="container">
+  <div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-xs-12 col-sm-9">
+      <p class="pull-right visible-xs">
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+      </p>
+      <div class="jumbotron">
+        <h1>Brighton Ski Resort Weather Report</h1>
+        <p>{{ latest_alta_weather.last_updated_time }}</p>
+      </div>
+      {% if latest_brighton_weather %}
+      <div class="row" style="margin-left:auto; margin-right:auto;">
+        <div class="col-xs-6 col-lg-4">
+          <h2>Snow Stuffs</h2>
+          <p>Twelve hour snow: {{ latest_brighton_weather.twelve_hour_snow }}</p>
+          <p>Base depth: {{ latest_brighton_weather.base }}</p>
+          <p>Total snow this season: {{ latest_brighton_weather.total_snow }}</p>
         </div>
-        {% if latest_brighton_weather %}
-        <div class="row" style="margin-left:auto; margin-right:auto;">
-          <div class="col-xs-6 col-lg-4">
-            <h2>Snow Stuffs</h2>
-            <p>Twelve hour snow: {{ latest_brighton_weather.twelve_hour_snow }}</p>
-            <p>Base depth: {{ latest_brighton_weather.base }}</p>
-            <p>Total snow this season: {{ latest_brighton_weather.total_snow }}</p>
-          </div>
-          <div class="col-xs-6 col-lg-4">
-            <h2>Current Weather</h2>
-            <p>Current temperature: {{ latest_brighton_weather.current_temp }}</p>
-            <p>Wind and sun: {{ latest_brighton_weather.current_weather }}</p>
-            <p>Forecast: {{ latest_brighton_weather.forecast }}</p>
-          </div>
+        <div class="col-xs-6 col-lg-4">
+          <h2>Current Weather</h2>
+          <p>Current temperature: {{ latest_brighton_weather.current_temp }}</p>
+          <p>Wind and sun: {{ latest_brighton_weather.current_weather }}</p>
+          <p>Forecast: {{ latest_brighton_weather.forecast }}</p>
         </div>
       </div>
-      {% else %}
-      <p>No weather is available.</p>
-      {% endif %}
+    </div>
+    {% else %}
+    <p>No weather is available.</p>
+    {% endif %}
 
-      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-        <div class="list-group">
-          <a href="http://www.brightonresort.com/mountain/snow-report/" target="_blank" class="list-group-item">Brighton Snow Report</a>
-          <a href="https://forecast.weather.gov/MapClick.php?CityName=Brighton&state=UT&site=SLC&textField1=40.6039&textField2=-111.581&mp=1" target="_blank" class="list-group-item">National Weather Service - Brighton, UT</a>
-          <a href="#" class="list-group-item">Link</a>
-          <a href="#" class="list-group-item">Link</a>
-          <a href="#" class="list-group-item">Link</a>
-        </div>
-      </div><!--/.sidebar-offcanvas-->
-    </div><!--/row-->
-    {% endblock %}
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+      <div class="list-group">
+        <a href="http://www.brightonresort.com/mountain/snow-report/" target="_blank" class="list-group-item">Brighton Snow Report</a>
+        <a href="https://forecast.weather.gov/MapClick.php?CityName=Brighton&state=UT&site=SLC&textField1=40.6039&textField2=-111.581&mp=1" target="_blank" class="list-group-item">National Weather Service - Brighton, UT</a>
+      </div>
+    </div><!--/.sidebar-offcanvas-->
+  </div><!--/row-->
+  <br>
+  <h2>Past 3 days:</h2>
+  {% for day in past_three_days %}
+  <div class="col-xs-6 col-lg-4">
+    <h4><strong>{{ day.last_updated }}</strong></h4>
+    <p>{{ day.last_updated_time }}</p>
+    <p>Twelve hour snow: {{ day.twelve_hour_snow }}</p>
+    <p>Base depth: {{ day.base }}</p>
+    <p>Total snow this season: {{ day.total_snow }}</p>
+    <p>Temperature: {{ day.current_temp }}</p>
+    <p>Wind and sun: {{ day.current_weather }}</p>
+    <p>Forecast: {{ day.forecast }}</p>
+  </div>
+  {% endfor %}
+</div><!--/container-->
+  {% endblock %}

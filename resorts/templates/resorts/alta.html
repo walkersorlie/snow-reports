@@ -46,5 +46,20 @@ Alta Report
       </div>
     </div><!--/.sidebar-offcanvas-->
   </div><!--/row-->
-</div>
+  <br>
+  <h2>Past 3 days:</h2>
+  {% for day in past_three_days %}
+  <div class="col-xs-6 col-lg-4">
+    <h4><strong>{{ day.last_updated }}</strong></h4>
+    <p>{{ day.last_updated_time }}</p>
+    <p>Twelve hour snow: {{ day.twelve_hour_snow }}</p>
+    <p>Twenty-four hour snow: {{ day.twenty4_hour_snow }}</p>
+    <p>Base depth: {{ day.base }}</p>
+    <p>Total snow this season: {{ day.total_snow }}</p>
+    <p>Temperature: {{ day.current_temp }}</p>
+    <p>Wind and sun: {{ day.current_weather }}</p>
+    <p>Forecast: {{ day.forecast }}</p>
+  </div>
+  {% endfor %}
+</div><!-- /container-->
 {% endblock %}

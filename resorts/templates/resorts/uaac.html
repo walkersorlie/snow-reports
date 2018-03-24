@@ -18,7 +18,6 @@ UAAC Report
       <div class="jumbotron">
         <h1>{{ latest_uaac_report.area }}</h1>
         <p>{{ latest_uaac_report.forcaster }}</p>
-        <p>{{ latest_uaac_report.date }}</p>
       </div>
       {% if latest_uaac_report %}
       <div class="row" style="margin-left:auto; margin-right:auto;">
@@ -43,10 +42,28 @@ UAAC Report
       </div>
     </div><!--/.sidebar-offcanvas-->
   </div><!--/row-->
+  <br>
+  <h2>Past 3 days:</h2>
+  {% for day in past_three_days %}
+  <div class="col-xs-6 col-lg-4">
+    <h4><strong>{{ day.date }}</strong></h4>
+    <h5><strong>Area</strong><h5>
+    <p>{{ day.area }}</p>
+    <br>
+    <h5><strong>Forecaster</strong></h5>
+    <p>{{ day.forcaster }}</p>
+    <br>
+    <h5><strong>Adivsory</strong></h5>
+    <p>{{ day.advisory }}</p>
+    <br>
+    <h5><strong>Current conditions</strong></h5>
+    <p>{{ day.current_conditions }}</p>
+    <p>{{ day.weather }}</p>
+  </div>
+  {% endfor %}
 </div><!--/container-->
-<div>
+<!-- <div>
   <iframe src="{% static 'avi-problems.html' %}" style='width:100%; height:500px;'></iframe>
-  <!-- <iframe src="https://www.w3schools.com/html/html_iframe.asp" style='width:100%; height:500px;'></iframe> -->
-</div>
+</div> -->
 
 {% endblock %}

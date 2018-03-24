@@ -85,7 +85,10 @@
   background-color: #222;
   color: #222;
 }
-.dropdown2 a:hover {background-color: #eee}
+.dropdown2 a:hover {
+  background-color: #eee;
+  text-decoration: none;
+}
 
 .dropdown2:hover .dropdown-content2 {
   display: block;
@@ -98,7 +101,7 @@
 }
 
 #sidebar {
-  margin-top: 60px ;
+  margin-top: 60px;
 }
 
 .list-group a {
