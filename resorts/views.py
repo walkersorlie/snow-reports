@@ -18,6 +18,7 @@ def alta(request):
     # need to figure out how to get 3 days, not last 3 records
     # compare last_updated datetime to today's date -1???
     # OR get 3 records from yesterday, day before, and day before before
+    # get latest report from each past day
     context = {'latest_alta_weather': latest_alta_weather,
                 'past_three_days': reversed_past_three_days}
     return render(request, 'resorts/alta.html', context)
