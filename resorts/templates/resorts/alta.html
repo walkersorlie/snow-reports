@@ -47,6 +47,7 @@ Alta Report
     </div><!--/.sidebar-offcanvas-->
   </div><!--/row-->
   <br>
+  {% if past_three_days %}
   <h2>Past 3 days:</h2>
   {% for day in past_three_days %}
   <div class="col-xs-6 col-lg-4">
@@ -61,5 +62,6 @@ Alta Report
     <p>Forecast: {{ day.forecast }}</p>
   </div>
   {% endfor %}
+  {% endif %}
 </div><!-- /container-->
 {% endblock %}
