@@ -133,6 +133,22 @@ a.list-group-item:hover {
   background-color: #eee;
   color: #222;
 }
+
+td, th {
+    border: 1px solid #8A949B;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #243743;
+  color: #fafafa;
+}
+
+tr:nth-child(odd) {
+  background-color: #fafafa;
+  color: #243743;
+}
 /*.list-group-hover {
   background-color: #eee;
   color: #222;

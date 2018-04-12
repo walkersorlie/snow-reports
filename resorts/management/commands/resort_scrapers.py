@@ -125,14 +125,15 @@ def alta():
                     # twenty4_hour_snow_field = str(row.find('td'))
                     twenty4_hour_snow_field = row.find('td').get_text()
                     # response.write((twenty4_hour_snow_field + "<br><br>"))
-                elif specific == 3: # base_field
+                elif specific == 2: # base_field
                     # base_field = str(row.find('td'))
                     base_field = row.find('td').get_text()
-                    # print base_field
+                    print base_field
                     # response.write((base_field + "<br><br>"))
-                elif specific == 4: # total_snow_field
+                elif specific == 3: # total_snow_field
                     # total_snow_field = str(row.find('td')) + " "
                     total_snow_field = row.find('td').get_text()
+                    print total_snow_field
                     # response.write((total_snow_field + "<br><br>"))
         elif count == 1:  # current_weather
             for specific, row in enumerate(entries):
@@ -145,7 +146,7 @@ def alta():
                 elif specific == 1: # winds
                     table_rows = row.find_all('td')
                     # current_weather_field = current_weather_field + str(table_rows[0]) + str(table_rows[1])
-                    current_weather_field = current_weather_field + table_rows[0].get_text() + table_rows[1].get_text()
+                    current_weather_field = current_weather_field +", " + table_rows[0].get_text() + " " +  table_rows[1].get_text() + " wind"
                     # response.write((current_weather_field + "<br><br>"))
                 elif specific == 2: # temperature
                     # current_temp_field = str(row.find('td'))
@@ -208,6 +209,7 @@ def snowbird():
     # response.write(twenty4_hour_snow_field + "<br><br>")
 
     base_field = tables[3].get_text()
+    print base_field
     # response.write(base_field + "<br><br>")
 
     total_snow_field = tables[4].get_text()
@@ -251,6 +253,7 @@ def brighton():
     current_temp = current_weather_tables.find('div', class_= 'c_info quarter')
     current_snow = current_weather_tables.find('div', class_='c_snow quarter')
     snow_totals = current_weather_tables.find('div', class_='c_totals quarter')
+    
     forecast = soup.find('div', class_='extended_forecast')
 
     last_updated_date = datetime.datetime.now()
