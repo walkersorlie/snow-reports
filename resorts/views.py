@@ -55,6 +55,7 @@ def index(request):
 
 def alta(request):
     latest_alta_weather = Resort_Weather.objects.filter(resort__exact=1, last_updated__isnull=False).latest('last_updated')
+    # need to get more records maybe??
     past_three_days = Resort_Weather.objects.filter(resort__exact=1, last_updated__isnull=False).order_by('-last_updated')[1:12]
     reversed_past_three_days = get_last_three_days(past_three_days, '')
     # need to figure out how to get 3 days, not last 3 records
