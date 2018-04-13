@@ -149,6 +149,23 @@ tr:nth-child(odd) {
   background-color: #fafafa;
   color: #243743;
 }
+
+.resorts-col-left {
+  width: 47%;
+  margin-left: 30px;
+  height: 300px;
+}
+
+.resorts-col-right {
+  width: 47%;
+  margin-left:15px;
+  height: 300px;
+  overflow: hidden;
+}
+
+div.resorts-col-right:hover, div.resorts-col-left:hover {
+  transform:scale(1.25);
+}
 /*.list-group-hover {
   background-color: #eee;
   color: #222;
