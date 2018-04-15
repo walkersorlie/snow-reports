@@ -19,51 +19,48 @@ UAAC Report
         <h1>{{ latest_uaac_report.area }}</h1>
         <p>{{ latest_uaac_report.forcaster }}</p>
       </div>
-      {% if latest_uaac_report %}
       <div class="row" style="margin-left:auto; margin-right:auto;">
-        <div class="col-xs-6 col-lg-4" style="margin-left: 80px;">
+        <div class="col-xs-6 col-lg-4" style="margin-left: auto; width: 400px;">
           <h2>Advisory</h2>
           <p>{{ latest_uaac_report.advisory }}<p>
+          </div>
+          <div class="col-xs-6 col-lg-4" style="width: 400px; margin-right: 20px;">
+            <h2>Current Conditions</h2>
+            <p>{{ latest_uaac_report.current_conditions }}</p>
+          </div>
         </div>
-        <div class="col-xs-6 col-lg-4" style="width: 350px; margin-right: 100px;">
-          <h2>Current Conditions</h2>
-          <p>{{ latest_uaac_report.current_conditions }}</p>
-          <p>{{ latest_uaac_report.weather }}</p>
+        <div class="row" style="margin-left: auto; margin-right: auto;">
+          <div class="col-xs-6 col-lg-4" style="margin-left: auto; width: 400px;">
+            <h2>Weather</h2>
+            <p>{{ latest_uaac_report.weather }}</p>
+          </div>
+          <div class="col-xs-6 col-lg-4" style="width: 400px; margin-right: 20px;">
+            <h2>Recent Activity</h2>
+            <p>{{ latest_uaac_report.recent_activity }}</p>
+          </div>
         </div>
       </div>
-    </div>
-    {% else %}
-    <p>No weather is available.</p>
-    {% endif %}
 
-    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-      <div class="list-group">
-        <a href="https://utahavalanchecenter.org/advisory/salt-lake" target="_blank" class="list-group-item">UAAC Report</a>
+      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+        <div class="list-group">
+          <a href="https://utahavalanchecenter.org/advisory/salt-lake" target="_blank" class="list-group-item">UAAC Report</a>
+        </div>
+      </div><!--/.sidebar-offcanvas-->
+    </div><!--/row-->
+    <br>
+    <h2>Past 3 days:</h2>
+    {% for day in past_three_days %}
+    <div class="col-xs-6 col-lg-4">
+        <h4><strong>{{ day.date }}</strong></h4>
+        <table>
+          <tr><td><p>{{ day.area }}</p></td></tr>
+          <tr><td><p>{{ day.forcaster }}</p></td></tr>
+          <tr><td><p><strong>Advisory:</strong> {{ day.advisory }}</p></td></tr>
+          <tr><td><p><strong>Current conditions:</strong> {{ day.current_conditions }}</p></td></tr>
+          <tr><td><p><strong>Weather:</strong> {{ day.weather }}</p></td></tr>
+          <tr><td><p><strong>Recent activity:</strong> {{ day.recent_activity }}</p></td></tr>
+        </table>
       </div>
-    </div><!--/.sidebar-offcanvas-->
-  </div><!--/row-->
-  <br>
-  <h2>Past 3 days:</h2>
-  {% for day in past_three_days %}
-  <div class="col-xs-6 col-lg-4">
-    <h4><strong>{{ day.date }}</strong></h4>
-    <h5><strong>Area</strong><h5>
-    <p>{{ day.area }}</p>
-    <br>
-    <h5><strong>Forecaster</strong></h5>
-    <p>{{ day.forcaster }}</p>
-    <br>
-    <h5><strong>Adivsory</strong></h5>
-    <p>{{ day.advisory }}</p>
-    <br>
-    <h5><strong>Current conditions</strong></h5>
-    <p>{{ day.current_conditions }}</p>
-    <p>{{ day.weather }}</p>
-  </div>
-  {% endfor %}
-</div><!--/container-->
-<!-- <div>
-  <iframe src="{% static 'avi-problems.html' %}" style='width:100%; height:500px;'></iframe>
-</div> -->
-
-{% endblock %}
+      {% endfor %}
+    </div><!--/container-->
+    {% endblock %}

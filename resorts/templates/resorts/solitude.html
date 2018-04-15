@@ -20,20 +20,20 @@ Solitude Report
       </div>
       {% if latest_solitude_weather %}
       <div class="row" style="margin-left:auto; margin-right:auto;">
-        <div class="col-xs-6 col-lg-4" style="margin-left: 120px;">
+        <div class="col-xs-6 col-lg-4" style="margin-left: 80px;">
           <h2>Snow Stuffs</h2>
-          <table>
-          <tr><td><p>Twenty-four hour snow: {{ latest_solitude_weather.twenty4_hour_snow }}</p></td></tr>
-          <tr><td><p>Base depth: {{ latest_solitude_weather.base }}</p></td></tr>
-          <tr><td><p>Total snow this season: {{ latest_solitude_weather.total_snow }}</p></td></tr>
+          <table class="resorts-main-table">
+          <tr><td><p><strong>Twenty-four hour snow:</strong> {{ latest_solitude_weather.twenty4_hour_snow }}</p></td></tr>
+          <tr><td><p><strong>Base depth:</strong> {{ latest_solitude_weather.base }}</p></td></tr>
+          <tr><td><p><strong>Total snow this season:</strong> {{ latest_solitude_weather.total_snow }}</p></td></tr>
         </table>
         </div>
-        <div class="col-xs-6 col-lg-4" style="width: 300px; margin-right: 120px;">
+        <div class="col-xs-6 col-lg-4" style="margin-left: 80px;">
           <h2>Current Weather</h2>
-          <table>
-          <tr><td><p>Current temperature: {{ latest_solitude_weather.current_temp }}</p></td></tr>
-          <tr><td><p>Wind and sun: {{ latest_solitude_weather.current_weather }}</p></td></tr>
-          <tr><td><p>Forecast: {{ latest_solitude_weather.forecast }}</p></td></tr>
+          <table class="resorts-main-table">
+          <tr><td><p><strong>Current temperature:</strong> {{ latest_solitude_weather.current_temp }}</p></td></tr>
+          <tr><td><p><strong>Wind and sun:</strong> {{ latest_solitude_weather.current_weather }}</p></td></tr>
+          <tr><td><p><strong>Forecast:</strong> {{ latest_solitude_weather.forecast }}</p></td></tr>
         </table>
         </div>
       </div>
@@ -55,14 +55,14 @@ Solitude Report
   {% for day in past_three_days %}
   <div class="col-xs-6 col-lg-4">
     <h4><strong>{{ day.last_updated }}</strong></h4>
-    <table>
+    <table class="resorts-history-table">
     <tr><td><p>{{ day.last_updated_time }}</p></td></tr>
-    <tr><td><p>Twenty-four hour snow: {{ day.twenty4_hour_snow }}</p></td></tr>
-    <tr><td><p>Base depth: {{ day.base }}</p></td></tr>
-    <tr><td><p>Total snow this season: {{ day.total_snow }}</p></td></tr>
-    <tr><td><p>Temperature: {{ day.current_temp }}</p></td></tr>
-    <tr><td><p>Wind and sun: {{ day.current_weather }}</p></td></tr>
-    <tr><td><p>Forecast: {{ day.forecast }}</p></td></tr>
+    <tr><td><p><strong>Twenty-four hour snow:</strong> {{ day.twenty4_hour_snow }}</p></td></tr>
+    <tr><td><p><strong>Base depth:</strong> {{ day.base }}</p></td></tr>
+    <tr><td><p><strong>Total snow this season:</strong> {{ day.total_snow }}</p></td></tr>
+    <tr><td><p><strong>Temperature:</strong> {{ day.current_temp }}</p></td></tr>
+    <tr><td><p><strong>Wind and sun:</strong> {{ day.current_weather }}</p></td></tr>
+    <tr><td><p><strong>Forecast:</strong> {{ day.forecast }}</p></td></tr>
 </table>
   </div>
   {% endfor %}

@@ -62,8 +62,11 @@ class Command(BaseCommand):
         weather_field = soup.find(id = "weather-row")
         weather_field = weather_field.find('p').get_text()
 
+        recent_activity_field = soup.find(id = "recent-activity-row")
+        recent_activity_field = recent_activity_field.find('p').get_text()
+
         # UAAC_Report model
-        uaac_report = UAAC_Report(area=area_field, forcaster=forcaster_field, date=datetime.datetime.now(), advisory=advisory_field, current_conditions=current_conditions_field, weather=weather_field)
+        uaac_report = UAAC_Report(area=area_field, forcaster=forcaster_field, date=datetime.datetime.now(), advisory=advisory_field, current_conditions=current_conditions_field, recent_activity=recent_activity_field, weather=weather_field)
         uaac_report.save()
 
         # self.stdout.write("It worked")

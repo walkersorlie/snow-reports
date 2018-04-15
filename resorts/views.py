@@ -31,8 +31,8 @@ def get_last_three_days(resort_set, uaac):
     else:
         for day in resort_set:
             dates.append(day.last_updated)
-        # print dates
-        # print
+        print dates
+        print
         latest = dates[0]
         for day in dates:
             if day.date() != latest.date():
@@ -56,7 +56,7 @@ def index(request):
 def alta(request):
     latest_alta_weather = Resort_Weather.objects.filter(resort__exact=1, last_updated__isnull=False).latest('last_updated')
     # need to get more records maybe??
-    past_three_days = Resort_Weather.objects.filter(resort__exact=1, last_updated__isnull=False).order_by('-last_updated')[1:12]
+    past_three_days = Resort_Weather.objects.filter(resort__exact=1, last_updated__isnull=False).order_by('-last_updated')[1:32]
     reversed_past_three_days = get_last_three_days(past_three_days, '')
     # need to figure out how to get 3 days, not last 3 records
     # compare last_updated datetime to today's date -1???

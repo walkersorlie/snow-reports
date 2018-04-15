@@ -2,34 +2,49 @@
 {% load static %}
 
 {% block title %}
-  Resorts
+Resorts
 {% endblock %}
 
 {% block body %}
-  <div>
-    {{ response }}
-  </div>
-  <div style="overflow-x: hidden;">
-    <div class="row">
-      <div class="col-lg-4 resorts-col-left" style="background-image: url({% static 'images/alta-resorts.jpg' %});">
-        <h2>Alta</h2>
-        <p><a class="btn btn-primary" href="{% url 'resorts:alta' %}" role="button">Alta Report</a></p>
+<!-- <div>
+{{ response }}
+</div> -->
+<div style="overflow-x: hidden; height: 100%;">
+  <div class="row" style="margin-top: 50px;">
+    <div class="col-lg-4 resorts-col-left" style="position: relative;">
+      <div class="image">
+        <a href="{% url 'resorts:alta' %}"><img src="{% static 'images/alta-resorts2.jpg' %}"/></a>
       </div>
-      <div class="col-lg-4 resorts-col-right" style="background-image: url({% static 'images/snowbird-resorts.jpg' %});">
-        <h2>Snowbird</h2>
-        <p><a class="btn btn-primary" href="{% url 'resorts:snowbird' %}" role="button">Snowbird Report</a></p>
-     </div>
-   </div>
-   <div class="row" style="margin-top: 15px;">
-     <div class="col-lg-4 resorts-col-left" style="background-image: url({% static 'images/brighton-resorts.jpg' %});">
-       <h2>Brighton</h2>
-       <p><a class="btn btn-primary" href="{% url 'resorts:brighton' %}" role="button">Brighton Report</a></p>
+      <div class="resorts-name">
+        <h2>Alta</h2>
+      </div>
     </div>
-    <div class="col-lg-4 resorts-col-right" style="background-image: url({% static 'images/solitude-resorts.jpg' %});">
-      <h2>Solitude</h2>
-      <p><a class="btn btn-primary" href="{% url 'resorts:solitude' %}" role="button">Solitude Report</a></p>
-   </div>
- </div>
-   </div>
- </div>
-{% endblock %}
+    <div class="col-lg-4 resorts-col-right" style="position: relative;">
+      <div class="image">
+        <a href="{% url 'resorts:snowbird' %}"><img src="{% static 'images/snowbird-resorts2.jpg' %}"></a>
+      </div>
+      <div class="resorts-name">
+        <h2>Snowbird</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 50px;">
+    <div class="col-lg-4 resorts-col-left">
+      <div class="image">
+        <a href="{% url 'resorts:brighton' %}"><img src="{% static 'images/brighton-resorts2.jpg' %}"></a>
+      </div>
+      <div class="resorts-name">
+        <h2>Brighton</h>
+        </div>
+      </div>
+      <div class="col-lg-4 resorts-col-right">
+        <div class="image">
+          <a href="{% url 'resorts:solitude' %}"><img src="{% static 'images/solitude-resort.jpg' %}"></a>
+        </div>
+        <div class="resorts-name">
+          <h2>Solitude</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

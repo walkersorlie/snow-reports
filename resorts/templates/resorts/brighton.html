@@ -20,19 +20,19 @@ Brighton Report
       </div>
       {% if latest_brighton_weather %}
       <div class="row" style="margin-left:auto; margin-right:auto;">
-        <div class="col-xs-6 col-lg-4" style="margin-left: 120px;">
+        <div class="col-xs-6 col-lg-4" style="margin-left: 80px;">
           <h2>Snow Stuffs</h2>
-          <table>
-          <tr><td><p>Twelve hour snow: {{ latest_brighton_weather.twelve_hour_snow }}</p></td></tr>
-          <tr><td><p>Base depth: {{ latest_brighton_weather.base }}</p></td></tr>
+          <table class="resorts-main-table">
+          <tr><td><p><strong>Twelve hour snow:</strong> {{ latest_brighton_weather.twelve_hour_snow }}</p></td></tr>
+          <tr><td><p>{{ latest_brighton_weather.base }}</p></td></tr>
+          <tr><td><p><strong>Current temperature:</strong> {{ latest_brighton_weather.current_temp }}</p></td></tr>
+          <tr><td><p>{{ latest_brighton_weather.current_weather }}</p></td></tr>
         </table>
         </div>
-        <div class="col-xs-6 col-lg-4" style="width: 300px; margin-right: 120px;">
+        <div class="col-xs-6 col-lg-4" style="margin-left: 80px;">
           <h2>Current Weather</h2>
-          <table>
-          <tr><td><p>Current temperature: {{ latest_brighton_weather.current_temp }}</p></td></tr>
-          <tr><td><p>Wind and sun: {{ latest_brighton_weather.current_weather }}</p></td></tr>
-          <tr><td><p>Forecast: {{ latest_brighton_weather.forecast }}</p></td></tr>
+          <table class="resorts-main-table">
+          <tr><td><p>{{ latest_brighton_weather.forecast }}</p></td></tr>
         </table>
         </div>
       </div>
@@ -54,12 +54,12 @@ Brighton Report
   {% for day in past_three_days %}
   <div class="col-xs-6 col-lg-4">
     <h4><strong>{{ day.last_updated }}</strong></h4>
-    <table>
-    <tr><td><p>Twelve hour snow: {{ day.twelve_hour_snow }}</p></td></tr>
-    <tr><td><p>Base depth: {{ day.base }}</p></td></tr>
-    <tr><td><p>Temperature: {{ day.current_temp }}</p></td></tr>
-    <tr><td><p>Wind and sun: {{ day.current_weather }}</p></td></tr>
-    <tr><td><p>Forecast: {{ day.forecast }}</p></td></tr>
+    <table class="resorts-history-table">
+    <tr><td><p><strong>Twelve hour snow:</strong> {{ day.twelve_hour_snow }}</p></td></tr>
+    <tr><td><p><strong>Base depth:</strong> {{ day.base }}</p></td></tr>
+    <tr><td><p><strong>Temperature:</strong> {{ day.current_temp }}</p></td></tr>
+    <tr><td><p>{{ day.current_weather }}</p></td></tr>
+    <tr><td><p>{{ day.forecast }}</p></td></tr>
   </table>
   </div>
   {% endfor %}

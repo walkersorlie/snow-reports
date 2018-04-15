@@ -38,6 +38,7 @@ class UAAC_Report(models.Model):
     date = models.DateTimeField()
     advisory = models.TextField()
     current_conditions = models.TextField()
+    recent_activity = models.TextField()
     weather = models.TextField()
 
     def __str__(self):
