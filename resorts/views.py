@@ -70,7 +70,7 @@ def alta(request):
 
 def snowbird(request):
     latest_snowbird_weather = Resort_Weather.objects.filter(resort__exact=2, last_updated__isnull=False).latest('last_updated')
-    past_three_days = Resort_Weather.objects.filter(resort__exact=2, last_updated__isnull=False).order_by('-last_updated')[1:12]
+    past_three_days = Resort_Weather.objects.filter(resort__exact=2, last_updated__isnull=False).order_by('-last_updated')[1:32]
     reversed_past_three_days = get_last_three_days(past_three_days, '')
     context = {'latest_snowbird_weather': latest_snowbird_weather,
                 'past_three_days': reversed_past_three_days}
@@ -78,7 +78,7 @@ def snowbird(request):
 
 def brighton(request):
     latest_brighton_weather = Resort_Weather.objects.filter(resort__exact=3, last_updated__isnull=False).latest('last_updated')
-    past_three_days = Resort_Weather.objects.filter(resort__exact=3, last_updated__isnull=False).order_by('-last_updated')[1:12]
+    past_three_days = Resort_Weather.objects.filter(resort__exact=3, last_updated__isnull=False).order_by('-last_updated')[1:32]
     reversed_past_three_days = get_last_three_days(past_three_days, '')
     context = {'latest_brighton_weather': latest_brighton_weather,
                 'past_three_days': reversed_past_three_days}
@@ -86,7 +86,7 @@ def brighton(request):
 
 def solitude(request):
     latest_solitude_weather = Resort_Weather.objects.filter(resort__exact=4, last_updated__isnull=False).latest('last_updated')
-    past_three_days = Resort_Weather.objects.filter(resort__exact=4, last_updated__isnull=False).order_by('-last_updated')[1:12]
+    past_three_days = Resort_Weather.objects.filter(resort__exact=4, last_updated__isnull=False).order_by('-last_updated')[1:32]
     reversed_past_three_days = get_last_three_days(past_three_days, '')
     context = {'latest_solitude_weather': latest_solitude_weather,
                 'past_three_days': reversed_past_three_days}
@@ -94,7 +94,7 @@ def solitude(request):
 
 def uaac(request):
     latest_uaac_report = UAAC_Report.objects.filter(date__isnull=False).latest('date')
-    past_three_days = UAAC_Report.objects.filter(date__isnull=False).order_by('-date')[1:6]
+    past_three_days = UAAC_Report.objects.filter(date__isnull=False).order_by('-date')[1:15]
     reversed_past_three_days = get_last_three_days(past_three_days, 'uaac')
     context = {'latest_uaac_report': latest_uaac_report,
                 'past_three_days': reversed_past_three_days}
