@@ -16,7 +16,6 @@ import urllib2
 class Command(BaseCommand):
     help = 'Runs the scrapers for the resorts'
 
-
     def handle(self, *args, **option):
         alta_thread = ScraperThread('alta')
         alta_thread.start()
@@ -27,17 +26,17 @@ class Command(BaseCommand):
         brighton_thread = ScraperThread('brighton')
         brighton_thread.start()
 
-        solitude_thread = ScraperThread('solitude')
-        solitude_thread.start()
+        # solitude_thread = ScraperThread('solitude')
+        # solitude_thread.start()
 
         alta_thread.join()
         snowbird_thread.join()
         brighton_thread.join()
-        solitude_thread.join()
+        # solitude_thread.join()
 
 class ScraperThread(Thread):
 
-    ''' Constructor. '''
+    ''' Constructor '''
     def __init__(self, function):
         Thread.__init__(self)
         self.function = function
@@ -52,20 +51,17 @@ class ScraperThread(Thread):
         else:
             solitude()
 
+''' Alta Scraper '''
 def alta():
-    """
-    Alta scraper
-    """
-
-    # htmlfile = urllib2.Request('https://www.alta.com/conditions/daily-mountain-report/snow-report', headers = {'User-Agent': 'Mozilla/5.0'})
-    # html = urlopen(htmlfile).read()
-    # soup = BeautifulSoup(html, "lxml")
+    htmlfile = urllib2.Request('https://www.alta.com/conditions/daily-mountain-report/snow-report', headers = {'User-Agent': 'Mozilla/5.0'})
+    html = urlopen(htmlfile).read()
+    soup = BeautifulSoup(html, "lxml")
 
     # with open('/home/walker/senior_proj/snow_site/reports/alta.html', 'w') as file:
     #     file.write(html)
-
-    with open("./reports/alta.html") as fp:
-        soup = BeautifulSoup(fp, "lxml")
+    #
+    # with open("./reports/alta.html") as fp:
+    #     soup = BeautifulSoup(fp, "lxml")
 
     # snow_report = soup.find(id = "snow-report")
     # tables = snow_report.find_all("table", limit = 3)
@@ -156,20 +152,17 @@ def alta():
     alta_weather = Resort_Weather(last_updated=last_updated_date, last_updated_time=last_updated_time_field, twelve_hour_snow=twelve_hour_snow_field, twenty4_hour_snow=twenty4_hour_snow_field, base=base_field, total_snow=total_snow_field, current_temp=current_temp_field, current_weather=current_weather_field, forecast=forecast_field, resort=foreign_key)
     alta_weather.save()
 
+''' Snowbird scraper'''
 def snowbird():
-    """
-    Snowbird scraper
-    """
+    htmlfile = urllib2.Request('https://www.snowbird.com/mountain-report/', headers = {'User-Agent': 'Mozilla/5.0'})
+    html = urlopen(htmlfile).read()
+    soup = BeautifulSoup(html, "lxml")
 
-    # htmlfile = urllib2.Request('https://www.snowbird.com/mountain-report/', headers = {'User-Agent': 'Mozilla/5.0'})
-    # html = urlopen(htmlfile).read()
-    # soup = BeautifulSoup(html, "lxml")
-    #
     # with open('/home/walker/senior_proj/snow_site/reports/snowbird.html', 'w') as file:
     #     file.write(html)
 
-    with open("./reports/snowbird.html") as fp:
-        soup = BeautifulSoup(fp, "lxml")
+    # with open("./reports/snowbird.html") as fp:
+    #     soup = BeautifulSoup(fp, "lxml")
 
     tables = soup.find_all('div', class_ = 'sb-condition_value', limit = 9)
     time = soup.find('div', class_ = 'date-display')
@@ -210,23 +203,20 @@ def snowbird():
             # response.write(forecast_field)
 
     # Resort_Weather model
-    # snowbird_weather = Resort_Weather(last_updated=last_updated_date, last_updated_time=last_updated_time_field, twelve_hour_snow=twelve_hour_snow_field, twenty4_hour_snow=twenty4_hour_snow_field, base=base_field, total_snow=total_snow_field, current_temp=current_temp_field, current_weather=current_weather_field, forecast=forecast_field, resort=foreign_key)
-    # snowbird_weather.save()
+    snowbird_weather = Resort_Weather(last_updated=last_updated_date, last_updated_time=last_updated_time_field, twelve_hour_snow=twelve_hour_snow_field, twenty4_hour_snow=twenty4_hour_snow_field, base=base_field, total_snow=total_snow_field, current_temp=current_temp_field, current_weather=current_weather_field, forecast=forecast_field, resort=foreign_key)
+    snowbird_weather.save()
 
+''' Brighton scraper '''
 def brighton():
-    """
-    Brighton scraper
-    """
+    htmlfile = urllib2.Request('http://www.brightonresort.com/mountain/snow-report/', headers = {'User-Agent': 'Mozilla/5.0'})
+    html = urlopen(htmlfile).read()
+    soup = BeautifulSoup(html, "lxml")
 
-    # htmlfile = urllib2.Request('http://www.brightonresort.com/mountain/snow-report/', headers = {'User-Agent': 'Mozilla/5.0'})
-    # html = urlopen(htmlfile).read()
-    # soup = BeautifulSoup(html, "lxml")
-    #
     # with open('/home/walker/senior_proj/snow_site/reports/brighton.html', 'w') as file:
     #     file.write(html)
 
-    with open("./reports/brighton.html") as fp:
-        soup = BeautifulSoup(fp, "lxml")
+    # with open("./reports/brighton.html") as fp:
+    #     soup = BeautifulSoup(fp, "lxml")
 
     current_weather_tables = soup.find('div', class_ = 'currently')
 
@@ -266,26 +256,22 @@ def brighton():
         count += 1
 
     # Resort_Weather model
-    # brighton_weather = Resort_Weather(last_updated=last_updated_date, last_updated_time=last_updated_time_field, twelve_hour_snow=twelve_hour_snow_field, twenty4_hour_snow=twenty4_hour_snow_field, base=base_field, total_snow=total_snow_field, current_temp=current_temp_field, current_weather=current_weather_field, forecast=forecast_field, resort=foreign_key)
-    # brighton_weather.save()
+    brighton_weather = Resort_Weather(last_updated=last_updated_date, last_updated_time=last_updated_time_field, twelve_hour_snow=twelve_hour_snow_field, twenty4_hour_snow=twenty4_hour_snow_field, base=base_field, total_snow=total_snow_field, current_temp=current_temp_field, current_weather=current_weather_field, forecast=forecast_field, resort=foreign_key)
+    brighton_weather.save()
 
+''' Solitude scraper '''
 def solitude():
-    """
-    Solitude scraper
-    """
+    htmlfile = urllib2.Request('https://solitudemountain.com/on-the-mountain', headers = {'User-Agent': 'Mozilla/5.0'})
+    html = urlopen(htmlfile).read()
+    soup = BeautifulSoup(html, "lxml")
 
-    # htmlfile = urllib2.Request('https://solitudemountain.com/on-the-mountain', headers = {'User-Agent': 'Mozilla/5.0'})
-    # html = urlopen(htmlfile).read()
-    # soup = BeautifulSoup(html, "lxml")
-    #
     # with open('/home/walker/senior_proj/snow_site/reports/solitude.html', 'w') as file:
     #     file.write(html)
 
-    with open("./reports/solitude.html") as fp:
-        soup = BeautifulSoup(fp, "lxml")
+    # with open("./reports/solitude.html") as fp:
+    #     soup = BeautifulSoup(fp, "lxml")
 
     weather_tables = soup.find('div', class_='snow-details')
-
     current_weather_div = weather_tables.find('div', class_='current')
     snow_totals = weather_tables.find('div', class_='snow-totals').find_all('div', class_='item')
     #snow_totals = snow_totals_outer.find_all('div', class_='item')
@@ -337,7 +323,7 @@ def solitude():
     # print current_weather_field
 
     # Resort_Weather model
-    # solitude_weather = Resort_Weather(last_updated=last_updated_date, last_updated_time=last_updated_time_field, twelve_hour_snow=twelve_hour_snow_field, twenty4_hour_snow=twenty4_hour_snow_field, base=base_field, total_snow=total_snow_field, current_temp=current_temp_field, current_weather=current_weather_field, forecast=forecast_field, resort=foreign_key)
-    # solitude_weather.save()
+    solitude_weather = Resort_Weather(last_updated=last_updated_date, last_updated_time=last_updated_time_field, twelve_hour_snow=twelve_hour_snow_field, twenty4_hour_snow=twenty4_hour_snow_field, base=base_field, total_snow=total_snow_field, current_temp=current_temp_field, current_weather=current_weather_field, forecast=forecast_field, resort=foreign_key)
+    solitude_weather.save()
 
     # print "script ran at: " + datetime.datetime.now()

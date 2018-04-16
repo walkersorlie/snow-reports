@@ -201,7 +201,7 @@ a.list-group-item:hover {
   padding-left: 5px;
 }
 
-.image {
+.image, .image2 {
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -215,14 +215,34 @@ a.list-group-item:hover {
     transition: all 1s ease;
 }
 
+.image2 img {
+  -webkit-transition: all 1s ease; /* Safari and Chrome */
+  -moz-transition: all 1s ease; /* Firefox */
+  -ms-transition: all 1s ease; /* IE 9 */
+  -o-transition: all 1s ease; /* Opera */
+  transition: all 1s ease;
+  transform: scale(1.10);
+}
+
 .image:hover img {
     -webkit-transform:scale(1.25); /* Safari and Chrome */
     -moz-transform:scale(1.25); /* Firefox */
     -ms-transform:scale(1.25); /* IE 9 */
     -o-transform:scale(1.25); /* Opera */
-     transform:scale(1.25);
+    transform:scale(1.25);
 }
 
+.image2:hover img {
+  -webkit-transform:scale(1.00); /* Safari and Chrome */
+  -moz-transform:scale(1.00); /* Firefox */
+  -ms-transform:scale(1.00); /* IE 9 */
+  -o-transform:scale(1.00); /* Opera */
+  transform:scale(1.00);
+}
+
+.home-row {
+  margin-bottom: 60px;
+}
 /*div.resorts-col-right:hover, div.resorts-col-left:hover {
   transform:scale(1.25);
 }*/
