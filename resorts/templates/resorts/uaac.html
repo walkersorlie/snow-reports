@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-  UAC Report
+UAC Report
 {% endblock %}
 
 
@@ -19,48 +19,59 @@
         <h1>{{ latest_uaac_report.area }}</h1>
         <p>{{ latest_uaac_report.forcaster }}</p>
       </div>
-      <div class="row" style="margin-left:auto; margin-right:auto;">
-        <div class="col-xs-6 col-lg-4" style="margin-left: auto; width: 400px;">
+      <div class="row uac-row" >
+        <div class="col-xs-6 col-lg-4 uac-col">
           <h2>Advisory</h2>
-          <p>{{ latest_uaac_report.advisory }}<p>
+          <table class="resorts-main-table">
+            <tr><td><p>{{ latest_uaac_report.advisory }}<p></td></tr>
+            </table>
           </div>
-          <div class="col-xs-6 col-lg-4" style="width: 400px; margin-right: 20px;">
+          <div class="col-xs-6 col-lg-4 uac-col">
             <h2>Current Conditions</h2>
-            <p>{{ latest_uaac_report.current_conditions }}</p>
+            <table class="resorts-main-table">
+              <tr></tr>
+              <tr><td><p>{{ latest_uaac_report.current_conditions }}</p></td></tr>
+            </table>
           </div>
         </div>
-        <div class="row" style="margin-left: auto; margin-right: auto;">
-          <div class="col-xs-6 col-lg-4" style="margin-left: auto; width: 400px;">
+        <div class="row uac-row" style="margin-top: 30px;">
+          <div class="col-xs-6 col-lg-4 uac-col">
             <h2>Weather</h2>
-            <p>{{ latest_uaac_report.weather }}</p>
+            <table class="resorts-main-table">
+              <tr></tr>
+              <tr><td><p>{{ latest_uaac_report.weather }}</p></td></tr>
+            </table>
           </div>
-          <div class="col-xs-6 col-lg-4" style="width: 400px; margin-right: 20px;">
+          <div class="col-xs-6 col-lg-4 uac-col">
             <h2>Recent Activity</h2>
-            <p>{{ latest_uaac_report.recent_activity }}</p>
+            <table class="resorts-main-table">
+              <tr><td><p>{{ latest_uaac_report.recent_activity }}</p></td></tr>
+            </table>
           </div>
         </div>
       </div>
 
       <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
         <div class="list-group">
-          <a href="https://utahavalanchecenter.org/advisory/salt-lake" target="_blank" class="list-group-item">UAC Report</a>
+          <a href="https://utahavalanchecenter.org/advisory/salt-lake" target="_blank" class="list-group-item">Official UAC Report</a>
         </div>
       </div><!--/.sidebar-offcanvas-->
     </div><!--/row-->
-    <br>
-    <h2>Past 3 days:</h2>
-    {% for day in past_three_days %}
-    <div class="col-xs-6 col-lg-4">
+    <div class="uac-history">
+      <h2>Past 3 days:</h2>
+      {% for day in past_three_days %}
+      <div class="col-xs-6 col-lg-4">
         <h4><strong>{{ day.date }}</strong></h4>
-        <table>
+        <table class="resorts-history-table">
           <tr><td><p>{{ day.area }}</p></td></tr>
           <tr><td><p>{{ day.forcaster }}</p></td></tr>
-          <tr><td><p><strong>Advisory:</strong> {{ day.advisory }}</p></td></tr>
+          <tr><td><p><strong>Report:</strong> {{ day.advisory }}</p></td></tr>
           <tr><td><p><strong>Current conditions:</strong> {{ day.current_conditions }}</p></td></tr>
           <tr><td><p><strong>Weather:</strong> {{ day.weather }}</p></td></tr>
           <tr><td><p><strong>Recent activity:</strong> {{ day.recent_activity }}</p></td></tr>
         </table>
       </div>
       {% endfor %}
-    </div><!--/container-->
-    {% endblock %}
+    </div>
+  </div><!--/container-->
+  {% endblock %}

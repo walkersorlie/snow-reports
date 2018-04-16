@@ -4,7 +4,7 @@
 {% block body %}
 <!-- Carousel
 ================================================== -->
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-bottom: 30px;">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -64,7 +64,7 @@
 
   <div class="starter-template">
     <div>
-      {{ response }}
+      <h3>{{ response }}</h3>
     </div>
   </div>
 
@@ -72,7 +72,7 @@
     <div class="col-lg-6">
       <div class="image2">
       <!-- <h2 style="text-align: center;"><a href="{% url 'resorts:index' %}" style="color:#222;" role="button">Resorts</a></h2> -->
-      <img src="{% static 'images/lcc.jpg' %}" style="width:100%;"></img>
+      <a href="{% url 'resorts:index' %}"><img src="{% static 'images/lcc.jpg' %}" style="width:100%;"></img></a>
       <!-- <div class="dropdown2" style="padding-left: 50px; margin-left: 175px;">
         <button class="dropbtn2">Resorts<span class="caret"></span></button>
         <div class="dropdown-content2">
@@ -83,22 +83,25 @@
         </div>
       </div> -->
     </div>
+    <div class="resorts-name" style="width: 555px;">
+      <h2>Resorts</h2>
+    </div>
     </div>
     <div class="col-lg-6 home-row">
-      <h4 style="margin-top: 150px;">Talking about resorts here</h4>
+      <h4 style="margin-top: 150px;">The ski resorts of Little Cottonwood Canyon&mdash;Alta, Snowbird, Brighton, and Solitude&mdash;recieve some of the best snow on earth, and a lot of it. Each resort has information about the snow and weather available for interested snow riders.</h4>
     </div>
   </div>
   <div class="row home-row">
     <div class="col-lg-6">
-      <h4 style="margin-top: 150px;">Talking about the Utah Avalanche Center</h4>
+      <h4 style="margin-top: 150px;">The Utah Avalanche Center(UAC) is a a 501(c)(3) non-profit organization partnering with the Forest Service. Their mission is to keep people on top of the Greatest Snow on Earth™, which they do by giving winter backcountry travelers the tools they need to stay alive and have fun in avalanche terrain. The UAC covers the entire state of Utah and has offices in Logan, Salt Lake City, and Moab.</h4>
     </div>
     <div class="col-lg-6">
         <h2 style="text-align: center;">Utah Avalanche Center</h2>
-        <!-- <div class="dropdown2" style="margin-top:12px;">
-          <p><a class="dropbtn2" href="{% url 'resorts:uaac' %}" role="button">Utah Avalanche Center</a></p>
-        </div> -->
         <div class="image2">
-          <img src="{% static 'images/uac.jpg' %}" style="width: 100%; height: 100%;"></img>
+          <a href="{% url 'resorts:uaac' %}"><img src="{% static 'images/uac.jpg' %}" style="width: 100%; height: 100%;"></img></a>
+        </div>
+        <div class="resorts-name" style="width: 555px;">
+          <h2>Utah Avalanche Center</h2>
         </div>
     </div>
   </div>

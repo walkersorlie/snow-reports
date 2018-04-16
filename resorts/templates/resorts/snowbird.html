@@ -20,21 +20,21 @@ Snowbird Report
       </div>
       {% if latest_snowbird_weather %}
       <div class="row" style="margin-left:auto; margin-right:auto;">
-        <div class="col-xs-6 col-lg-4" style="margin-left: 80px;">
+        <div class="col-xs-6 col-lg-4 resorts-col">
           <h2>Snow Stuffs</h2>
           <table class="resorts-main-table">
-          <tr><td><p><strong>Twelve hour snow:</strong> {{ latest_snowbird_weather.twelve_hour_snow }}</p></td></tr>
-          <tr><td><p><strong>Twenty-four hour snow:</strong> {{ latest_snowbird_weather.twenty4_hour_snow }}</p></td></tr>
-          <tr><td><p><strong>Base depth:</strong> {{ latest_snowbird_weather.base }}</p></td></tr>
-          <tr><td><p><strong>Total snow this season:</strong> {{ latest_snowbird_weather.total_snow }}</p></td></tr>
+            <tr><td><p><strong>Twelve hour snow:</strong> {{ latest_snowbird_weather.twelve_hour_snow }}</p></td></tr>
+            <tr><td><p><strong>Twenty-four hour snow:</strong> {{ latest_snowbird_weather.twenty4_hour_snow }}</p></td></tr>
+            <tr><td><p><strong>Base depth:</strong> {{ latest_snowbird_weather.base }}</p></td></tr>
+            <tr><td><p><strong>Total snow this season:</strong> {{ latest_snowbird_weather.total_snow }}</p></td></tr>
           </table>
         </div>
-        <div class="col-xs-6 col-lg-4" style="margin-left: 80px;">
+        <div class="col-xs-6 col-lg-4 resorts-col">
           <h2>Current Weather</h2>
           <table class="resorts-main-table">
-          <tr><td><p><strong>Current temperature:</strong> {{ latest_snowbird_weather.current_temp }}</p></td></tr>
-          <tr><td><p><strong>Wind and sun:</strong> {{ latest_snowbird_weather.current_weather }} mph</p></td></tr>
-          <tr><td><p><strong>Forecast:</strong> {{ latest_snowbird_weather.forecast }}</p></td></tr>
+            <tr><td><p><strong>Current temperature:</strong> {{ latest_snowbird_weather.current_temp }}</p></td></tr>
+            <tr><td><p><strong>Wind and sun:</strong> {{ latest_snowbird_weather.current_weather }} mph</p></td></tr>
+            <tr><td><p><strong>Forecast:</strong> {{ latest_snowbird_weather.forecast }}</p></td></tr>
           </table>
         </div>
       </div>
@@ -45,29 +45,30 @@ Snowbird Report
 
     <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
       <div class="list-group">
-        <a href="https://www.snowbird.com/mountain-report/" target="_blank" class="list-group-item">Snowbird Snow Report</a>
+        <a href="https://www.snowbird.com/mountain-report/" target="_blank" class="list-group-item">Official Snowbird Snow Report</a>
         <a href="https://forecast.weather.gov/MapClick.php?site=slc&textField1=40.58194&textField2=-111.65444" target="_blank" class="list-group-item">National Weather Service - Snowbird, UT</a>
       </div>
     </div><!--/.sidebar-offcanvas-->
   </div><!--/row-->
-  <br>
-  {% if past_three_days %}
-  <h2>Past 3 days:</h2>
-  {% for day in past_three_days %}
-  <div class="col-xs-6 col-lg-4">
-    <h4><strong>{{ day.last_updated }}</strong></h4>
-    <table class="resorts-history-table">
-    <tr><td><p>{{ day.last_updated_time }}</p></td></tr>
-    <tr><td><p><strong>Twelve hour snow:</strong> {{ day.twelve_hour_snow }}</p></td></tr>
-    <tr><td><p><strong>Twenty-four hour snow:</strong> {{ day.twenty4_hour_snow }}</p></td></tr>
-    <tr><td><p><strong>Base depth:</strong> {{ day.base }}</p></td></tr>
-    <tr><td><p><strong>Total snow this season:</strong> {{ day.total_snow }}</p></td></tr>
-    <tr><td><p><strong>Temperature:</strong> {{ day.current_temp }}</p></td></tr>
-    <tr><td><p><strong>Wind and sun:</strong> {{ day.current_weather }}</p></td></tr>
-    <tr><td><p><strong>Forecast:</strong> {{ day.forecast }}</p></td></tr>
-    </table>
-  </div>
-  {% endfor %}
-  {% endif %}
+  <div class="resort-history">
+    {% if past_three_days %}
+    <h2>Past 3 days:</h2>
+    {% for day in past_three_days %}
+    <div class="col-xs-6 col-lg-4">
+      <h4><strong>{{ day.last_updated }}</strong></h4>
+      <table class="resorts-history-table">
+        <tr><td><p>{{ day.last_updated_time }}</p></td></tr>
+        <tr><td><p><strong>Twelve hour snow:</strong> {{ day.twelve_hour_snow }}</p></td></tr>
+        <tr><td><p><strong>Twenty-four hour snow:</strong> {{ day.twenty4_hour_snow }}</p></td></tr>
+        <tr><td><p><strong>Base depth:</strong> {{ day.base }}</p></td></tr>
+        <tr><td><p><strong>Total snow this season:</strong> {{ day.total_snow }}</p></td></tr>
+        <tr><td><p><strong>Temperature:</strong> {{ day.current_temp }}</p></td></tr>
+        <tr><td><p><strong>Wind and sun:</strong> {{ day.current_weather }}</p></td></tr>
+        <tr><td><p><strong>Forecast:</strong> {{ day.forecast }}</p></td></tr>
+      </table>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </dv>
 </div><!--/container-->
 {% endblock %}

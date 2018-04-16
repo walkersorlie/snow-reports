@@ -12,7 +12,9 @@ def get_last_three_days(resort_set, uaac):
 
     if uaac == 'uaac':
         for day in resort_set:
-            dates.append(day.date)
+            # print day.date.date()
+            if day.date.date() != datetime.today().date():
+                dates.append(day.date)
         # print dates
         # print
         latest = dates[0]
@@ -31,8 +33,8 @@ def get_last_three_days(resort_set, uaac):
     else:
         for day in resort_set:
             # if day.last_updated == datetime.datetime.date(), don't add it
-            print day.last_updated.date()
-            print datetime.today()
+            # print day.last_updated.date()
+            # print datetime.today()
             if day.last_updated.date() != datetime.today().date():
                 dates.append(day.last_updated)
         # print dates
