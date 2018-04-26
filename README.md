@@ -7,10 +7,13 @@ This web application scrapes information from the Cottonwood ski resorts&mdash;A
   * snow in the past twenty-four hours
   * base depth
   * total snow for the season
+
 and weather information:
+
   * current temperature
   * current weather (current winds and visibility)
   * future forecast
+
 available for interested snow riders.
 
 
