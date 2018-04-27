@@ -21,6 +21,6 @@ The Utah Avalanche Center(UAC) is a a 501(c)(3) non-profit organization partneri
 
 The information on this site from the UAC is:
 * which area the report is for
-* who made the forecaster
+* who made the forecast
 * the advisory for the day
 * current conditions
